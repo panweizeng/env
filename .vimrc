@@ -10,8 +10,12 @@ set is
 set number
 "使用:e命令的时候 可选项预览
 set wildmenu
-"文件默认编码utf-8
+"文件默认编码
 set enc=utf-8
+"文件保存时使用的编码
+"fileencoding=utf-8
+"打开文件进行解码的猜测列表，优先以utf-8打开
+set fileencodings=utf-8,gbk
 "文件默认格式unix
 set ff=unix
 "缩进为4个空格宽度
@@ -76,6 +80,8 @@ let javascript_enable_domhtmlcss=1
 
 filetype on
 au BufNewFile,BufRead *.as set filetype=actionscript
+" Multiple filetype for freemarker
+au BufNewFile,BufRead *.ftl set filetype=ftl.html
 au BufReadCmd *.jar,*.xpi,*.egg call zip#Browse(expand("<amatch>"))
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType css set foldmethod=marker
@@ -83,8 +89,7 @@ autocmd FileType python filetype plugin indent on
 autocmd FileType python setlocal et sta sw=4 sts=4
 
 " 设置javascriptlint
-"autocmd FileType javascript set makeprg=/home/xp/bin/js/jsl\ -nologo\ -nofilelisting\ -nosummary\ -nocontext\ -conf\ '/home/xp/bin/js/jsl.conf'\ -process\ %
-autocmd FileType javascript set makeprg=jsl\ -nologo\ -nofilelisting\ -nosummary\ -nocontext\ -process\ %
+autocmd FileType javascript set makeprg=jslint\ %
 autocmd FileType javascript set errorformat=%f(%l):\ %m
 autocmd FileType javascript inoremap <silent> <F9> <C-O>:make<CR>
 autocmd FileType javascript map <silent> <F9> :make<CR>
