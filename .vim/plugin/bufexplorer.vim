@@ -504,7 +504,7 @@ function! <SID>BuildBufferList()
       " Get the name of the buffer.
       let bufName = bufname(i)
 
-      " Only show modifiable buffers (The idea is that we don't 
+      " Only show modifiable buffers (The idea is that we don't
       " want to show Explorers)
       if (bufName != '[BufExplorer]')
         " Get filename & Remove []'s & ()'s

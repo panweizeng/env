@@ -23,7 +23,7 @@ vbell_msg "   Wuff  ----  Wuff!!  "
 # all termcap entries are now duplicated as terminfo entries.
 # only difference should be the slightly modified syntax, and check for
 # terminfo entries, that are already corected in the database.
-# 
+#
 # G0 	we have a SEMI-GRAPHICS-CHARACTER-MODE
 # WS	this sequence resizes our window.
 # cs    this sequence changes the scrollregion
@@ -70,7 +70,7 @@ termcap xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
 terminfo xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
 
 #
-# Do not use xterms alternate window buffer. 
+# Do not use xterms alternate window buffer.
 # This one would not add lines to the scrollback buffer.
 #termcap xterm|xterms|xs ti=\E7\E[?47l
 #terminfo xterm|xterms|xs ti=\E7\E[?47l
@@ -269,7 +269,7 @@ hardstatus alwayslastline '%{bW}%-w%{.wB}%n %t%{-}%+w %=%{.w}'
 
 ############################# xp add #################################
 #chdir /home/xp/temp
-#screen -t toy 
+#screen -t toy
 #screen -t editor cd data/temp
 #screen -t network cd software
 #screen -t toy cd /

@@ -27,7 +27,7 @@
 " Update history removed, it's not very interesting.
 " Contributors were: Doug Potts, Bram Moolenaar, Thomas Köhler
 "
-" This is a modified version to be compatible with winmanager.vim. 
+" This is a modified version to be compatible with winmanager.vim.
 " Changes by Srinath Avadhanula
 "=============================================================================
 
@@ -189,7 +189,7 @@ let s:separator='"---------------------------------------------------'
 " if !exists(':Sexplore')
 "   command -n=? -complete=dir Sexplore :call s:StartExplorer(1, '<a>')
 " endif
-" 
+"
 "---
 " Start the explorer using the preferences from the global variables
 "
@@ -243,8 +243,8 @@ function! s:EditDir(...)
 		let name = a:1
 		set modifiable
 		1,$d_
-	end	
-	if a:0 >= 2 
+	end
+	if a:0 >= 2
 		let forceReDisplay = a:2
 	else
 		let forceReDisplay = 0
@@ -307,7 +307,7 @@ function! s:EditDir(...)
 		exec 'let diri = s:dir_'.i
 		if diri == b:completePath
 			" if we are on a previously displayed directory which is being redrawn
-			" forcibly, then skip the stage of pasting from memory ... 
+			" forcibly, then skip the stage of pasting from memory ...
 			if !forceReDisplay
 				let oldRep=&report
 				let save_sc = &sc
@@ -330,7 +330,7 @@ function! s:EditDir(...)
 			let s:currentFileNumberDisplayed = i
 			break
 		endif
-		let i = i+1	
+		let i = i+1
 	endwhile
 
 	" No need for any insertmode abbreviations, since we don't allow

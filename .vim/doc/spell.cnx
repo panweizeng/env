@@ -683,7 +683,7 @@ Vim 支持不少附加成分。下面给出描述 |spell-affix-vim|。已经作�
 词。
 
 行 12 (译者注: 应为行 11) 定义单词 "TCP/IP"。因为斜杠有特殊含义，这里使用逗号
-代替。它定义在字缀文件的 SLASH 项目里，见 |spell-SLASH|。注意 没有这个 SLASH 
+代替。它定义在字缀文件的 SLASH 项目里，见 |spell-SLASH|。注意 没有这个 SLASH
 项目，匹配的单词将是 "TCP,IP"。
 
 

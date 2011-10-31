@@ -46,7 +46,7 @@ map <leader>s :source ~/.vimrc<CR>
 
 " visual模式修改缩进时不退出该模式
 vnoremap < <gv
-vnoremap > >gv 
+vnoremap > >gv
 
 "映射F12键为行号的开关
 map <F12> :set number!<CR>
@@ -72,7 +72,7 @@ cnoremap <C-B> <Left>
 cnoremap <C-F> <Right>
 
 " 打开php折叠
-let php_folding = 1 
+let php_folding = 1
 " 打开javascript折叠
 let b:javascript_fold=1
 " 打开javascript对dom、html和css的支持
@@ -138,6 +138,6 @@ let g:winManagerWidth = 30
 let g:defaultExplorer = 0
 nmap <C-W><C-F> :FirstExplorerWindow<CR>
 nmap <C-W><C-B> :BottomExplorerWindow<CR>
-nmap <silent> <leader>wm :WMToggle<CR> 
+nmap <silent> <leader>wm :WMToggle<CR>
 
 

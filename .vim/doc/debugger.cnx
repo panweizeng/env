@@ -38,7 +38,7 @@
 输入连接的目的是让外部调试器把命令传送给 Vim。调试器送来的命令必须足以使它自己
 显示当前的调试环境和状态。
 
-目前的实现是基于 X 工具包中的 dispatch 循环和对 XtAddInput() 函数的调用的。 
+目前的实现是基于 X 工具包中的 dispatch 循环和对 XtAddInput() 函数的调用的。
 
 
 1.2 调试标号						*debug-signs*
@@ -77,7 +77,7 @@ Microsystem 的 dtterm 是一个例外，它有一个 "sign gutter" 可以用来
 目的在于使 Sun 的 Visual WorkShop 调试器能够显示表达式表达式求值。实际上，这个
 特性是用通用的方式实现的，所以它还可以用来显示其他的信息。
 
-气泡表达式求值还有一些可以设置的参数。对于 Motif，字体列表和颜色可以通过 X 
+气泡表达式求值还有一些可以设置的参数。对于 Motif，字体列表和颜色可以通过 X
 资源 (XmNballoonEvalFontList, XmNballoonEvalBackground, 和
 XmNballoonEvalForeground) 来设定。
 

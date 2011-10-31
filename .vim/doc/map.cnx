@@ -423,7 +423,7 @@ CTRL-V)。
 	:set encoding=latin1
 	:imap <M-C> foo
 	:set encoding=utf-8
-<M-C> 的映射是在 latin1 编码中被定义的，结果是一个 0xc3 字节。如果你在 UTF-8 
+<M-C> 的映射是在 latin1 编码中被定义的，结果是一个 0xc3 字节。如果你在 UTF-8
 解码中输入 á (0xe1 <M-a>) 它是双字节 0xc3 0xa1。这个时候你不希望 0xc3 字节被映
 射，否则的话将不能输入 á 字符了。
 

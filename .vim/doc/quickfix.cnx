@@ -78,7 +78,7 @@ quickfix 列表相互独立。
 			有文件名，则跳转到往前第 [count] 个错误。有关 [!] 和
 			'switchbuf'，参见 |:cc|。
 
-				
+
 :[count]lN[ext][!]			*:lp* *:lprevious* *:lN* *:lNext*
 :[count]lp[revious][!]	和 ":cNext" 与 ":cprevious" 类似，但使用当前窗口的位置
 			列表而不是 quickfix 列表。
@@ -147,7 +147,7 @@ quickfix 列表相互独立。
 :cg[etfile] [errorfile]					*:cg* *:cgetfile*
 			读入错误文件。和 ":cfile" 类似，只是不跳转到首个错误。
 
-			
+
 :lg[etfile] [errorfile]					*:lg* *:lgetfile*
 			和 ":cgetfile" 类似，但使用当前窗口的位置列表而不是
 			quickfix 列表。
@@ -470,7 +470,7 @@ Vim 有两种寻找模式匹配的方式: 内部方式和外部方式。内部 g
 			如果没有 'g' 标志位，每行只加一次。
 			如果有 'g'，每个匹配都被加入。
 
-			{pattern} 是 Vim 的搜索模式。除了用 / 之外，任何非 ID 
+			{pattern} 是 Vim 的搜索模式。除了用 / 之外，任何非 ID
 			字符 (见 |'isident') 都可以用来包围该模式，只要在
 			{pattern} 里不出现就行了。
 			适用 'ignorecase'。要否决该设置，在模式里用 |/\c| 来忽
@@ -532,7 +532,7 @@ Vim 可以和 "grep" 或类似 grep 的程序 (比如 GNU id-utils) 交互，其
 			注意 这时模式必须用分隔字符包围。
 
 							    *:lgr* *:lgrep*
-			
+
 :lgr[ep][!] [arguments]	和 ":grep" 类似，但使用当前窗口的位置列表而不是
 			quickfix 列表。
 

@@ -19,7 +19,7 @@ if exists("loaded_winmanager")
 end
 let loaded_winmanager = 1
 
-" width of the explorer windows 
+" width of the explorer windows
 if !exists("g:winManagerWidth")
 	let g:winManagerWidth = 25
 end
@@ -67,10 +67,10 @@ end
 " user.
 if !exists(':WinManagerGotoNextInGroup')
 	command -nargs=1 WinManagerGotoNextInGroup :silent call <SID>GotoNextExplorerInGroup(<args>)
-end	
+end
 if !exists(':WinManagerGotoPrevInGroup')
 	command -nargs=1 WinManagerGotoPrevInGroup :silent call <SID>GotoNextExplorerInGroup(<args>,-1)
-end	
+end
 
 " nifty command for debugging. SVarValueWinManager 'MRUList' will echo the
 " value of 's:MRUList' for instance. to be used for debugging winmanager.
@@ -99,7 +99,7 @@ let s:cpo_save = &cpo
 set cpo&vim
 
 "---
-" this function creates a variable 
+" this function creates a variable
 " s:explorerGroup_i
 " for the i^th time it is called. This variable will be of the form
 " s:explorerGroup_i = ",member1,member2,member3,"
@@ -110,16 +110,16 @@ set cpo&vim
 function! <SID>RegisterExplorerGroup()
 	" g:winManagerWindowLayout is of the form
 	" 'FileExplorer,TagsExplorer|BufExplorer'
-	
+
 	" begin extracting groups from the layout variable.
 	let groupNum = 1
 	while 1
-		" if no more groups then break.	
+		" if no more groups then break.
 		let curGroup = s:Strntok(g:winManagerWindowLayout, '|', groupNum)
 		if curGroup == ''
 			break
 		end
-		
+
 		" otherwise extract the explorers belonging to this group and the
 		" explorer ID's etc. also protect against the same explorer being put
 		" in 2 groups.
@@ -190,7 +190,7 @@ endfunction
 "---
 " initializes the window manager. sets the initial layout. as of now, the
 " layout of the explorer windows (i.e, which plugin appears above or below the
-" other) depends on the order in which the plugins are sourced. 
+" other) depends on the order in which the plugins are sourced.
 " TODO: make this easily user customizable later.
 "       Done! See comments about registration.
 "
@@ -282,7 +282,7 @@ function! <SID>StartWindowsManager()
 	while i <= s:numExplorerGroups
 		" for each group, see if any member of it is visible.
 		let windownum = s:IsExplorerGroupVisible(i)
-		
+
 		" if this explorer group is not visible, then open the first plugin
 		" belonging to this group
 		if windownum == -1
@@ -332,8 +332,8 @@ function! <SID>StartWindowsManager()
 		let cen = i
 	endwhile
 	call PrintError('done with start while loop')
-	
-	" now make the run for resizing. 
+
+	" now make the run for resizing.
 	let i = 1
 	while i <= s:numExplorerGroups
 		" find if its visible and the explorer of this group which is
@@ -347,8 +347,8 @@ function! <SID>StartWindowsManager()
 			continue
 		end
 		let numexp = s:WhichMemberVisible(i)
-		
-		" visible, goto that window. 
+
+		" visible, goto that window.
 		call s:GotoWindow(windownum)
 		exe 'let name = s:explorerName_'.numexp
 		" if this is not occupying the entire height of the window, then call
@@ -369,7 +369,7 @@ function! <SID>StartWindowsManager()
 	augroup END
 
 	call s:GotoWindow(currentWindowNumber)
-	" RepairAltRegister needs to be called here as well, because 
+	" RepairAltRegister needs to be called here as well, because
 	" 1. when winmanager is re-started, we need to restore the @# register to
 	"    what it was.
 	" 2. if winmanager is started for the first time, then we need to ensure
@@ -418,7 +418,7 @@ function! WinManagerFileEdit(bufName, split)
 	let oldRep=&report
 	let save_sc = &sc
 	set report=10000 nosc
-	
+
 	" if the file is already visible somewhere just go there.
 	" a:bufName is a fully qualified filename of the form
 	"    e:/path/to/file
@@ -434,7 +434,7 @@ function! WinManagerFileEdit(bufName, split)
 		call s:RepairAltRegister()
 
 	" otherwise goto the last listed buffer being edited.
-	else 
+	else
 
 		" if we had already opened this file, then use the #n notation instead
 		" of opening by file name. this preserves cursor position.
@@ -463,7 +463,7 @@ function! WinManagerFileEdit(bufName, split)
 			" this means that the layout has to be redone by v-splitting a new
 			" window for this file.
 			" first open the alternate file just to retain @# if its still
-			" listed. 
+			" listed.
 			if buflisted(lastBufferNumber)
 				exe 'silent! vsplit #'.lastBufferNumber
 				exe 'silent! e '.bufcall
@@ -511,7 +511,7 @@ function! <SID>RepairAltRegister()
 	let alternateBufferNumber = s:MRUGet(2)
 
 	" if the required alternatebuffer exists, then first edit it to preserve @#
- 	if alternateBufferNumber != bufnr("#") 
+ 	if alternateBufferNumber != bufnr("#")
 		\ && alternateBufferNumber != -1
 		\ && buflisted(alternateBufferNumber)
  		exec 'silent! b! '.alternateBufferNumber
@@ -535,7 +535,7 @@ function! <SID>RepairAltRegister()
  	" now edit the current file (to preserve @% :-) )
 	" it seems that using ":b !" is _very_ important to preserve syntax
 	" highlighting. if ":e #" or ":b " is used, then syntax highlighting is
-	" lost and the ugly hack thing keeps getting called everytime. 
+	" lost and the ugly hack thing keeps getting called everytime.
 	" still dont know exactly why this is. it has something to do with
 	" abandoned buffers being kept and also nested autocommands, but its not
 	" very clear to me what it is.
@@ -572,7 +572,7 @@ endfunction
 function! <SID>RefreshWinManager(...)
 	" refreshes the window layout and the displayes of windows which trigger
 	" on autocommands.
-	
+
 	" make a note of whether this refresh was triggered by the BufDelete event
 	" or not.
 	let _split = &splitbelow
@@ -598,7 +598,7 @@ function! <SID>RefreshWinManager(...)
 	if !g:persistentBehaviour && s:OnlyExplorerWindowsOpen()
 		qa
 	end
-	
+
 	" this magic statement is curing the syntax losing problem. WHY?
 	let s:commandRunning = 1
 	let g:numRefs = g:numRefs + 1
@@ -658,7 +658,7 @@ function! <SID>RefreshWinManager(...)
 			let nearestGroupDist = 1000000
 			let j = 1
 			while j <= s:numExplorerGroups
-				
+
 				let windownum = s:IsExplorerGroupVisible(j)
 				if windownum != -1
 					let dist = ( (j-i) < 0 ? (i-j) : (j-i) )
@@ -715,13 +715,13 @@ function! <SID>RefreshWinManager(...)
 
 	" refreshing done, now return back to where we were originally.
 	call <SID>GotoWindow(currentWindowNumber)
-	
+
 	" however, we still have to "repair" the actual @% and @# registers, in
 	" case we are returning to a listed buffer.  also should do this only for
 	" a BufEnter event. For a BufDelete event, the do this only if the current
 	" buffer is not the buffer being deleted.
 	call PrintError('refresh: abuf = '.expand('<abuf>'))
-	if buflisted(bufnr("%")) && !isdirectory(bufname("%")) && 
+	if buflisted(bufnr("%")) && !isdirectory(bufname("%")) &&
 	\	( !BufDelete || ( bufnr('%') != expand('<abuf>') ) )
 		call <SID>RepairAltRegister()
 	end
@@ -750,10 +750,10 @@ function! <SID>ResizeAllExplorers()
 endfunction
 
 "---
-" Make sure a path has proper form. 
+" Make sure a path has proper form.
 " this function forces every path to take the following form
 " dir1/dir2/file    OR
-" dir1/dir2/dir/ 
+" dir1/dir2/dir/
 " i.e, it replaces \ with / and stuff.
 "
 function! <SID>Path(p)
@@ -850,7 +850,7 @@ endfunction
 " find the memn^th member's explorer number of the groupn^th explorer group
 " i.e, if s:explorerGroup_2 = ",3,4,5,"
 " then FindExplorerInGroup(2,3) = 5
-" 
+"
 " returs -1 if its not possible.
 "
 function! <SID>FindExplorerInGroup(groupn, memn)
@@ -917,7 +917,7 @@ endfunction
 " edit the first possible explorer after memn belonging to groun. use editcmd
 " to form the new window.
 function! <SID>EditNextVisibleExplorer(grpn, memn, dir, editcmd)
-	
+
 	call PrintError('EditNext: grpn = '.a:grpn.', memn = '.a:memn.', dir = '.a:dir.' editcmd = '.a:editcmd)
 	" then try to find the number of the next member.
 	let startmn = (a:memn ? a:memn : 1)
@@ -932,10 +932,10 @@ function! <SID>EditNextVisibleExplorer(grpn, memn, dir, editcmd)
 	" cycle through the next explorers in this group finding out the next
 	" explorer which says its able to display anything at all.
 		let once = 1
-	
+
 		let nextEN = s:FindExplorerInGroup(a:grpn, nextmn)
 		" if the next member doesnt exist wrap around.
-		if nextEN == -1 
+		if nextEN == -1
 			if a:dir == 1
 				let nextEN = s:FindExplorerInGroup(a:grpn, 1)
 				let nextmn = 1
@@ -1210,7 +1210,7 @@ function! <SID>MRUGet(slot)
 endfunction
 
 " Strntok:
-" extract the n^th token from s seperated by tok. 
+" extract the n^th token from s seperated by tok.
 " example: Strntok('1,23,3', ',', 2) = 23
 fun! <SID>Strntok(s, tok, n)
 	return matchstr( a:s.a:tok[0], '\v(\zs([^'.a:tok.']*)\ze['.a:tok.']){'.a:n.'}')
@@ -1224,7 +1224,7 @@ fun! <SID>Strntok2(s, tok, n)
 	return matchstr( a:s, '\v((['.a:tok.']\zs[^'.a:tok.']*)\ze){'.a:n.'}')
 endfun
 
-" InitializeMRUList 
+" InitializeMRUList
 "
 " initialize the MRU list. initially this will be just the buffers in the
 " order of their buffer numbers with the @% and @# leading. The MRU list
@@ -1233,7 +1233,7 @@ endfun
 " identifying the position of buffers in the list easier even if they occur in
 " the beginning or end and in situations where one buffer number is part of
 " another. i.e the string "9" is part of the string "19"
-" 
+"
 function! <SID>InitializeMRUList()
 	let nBufs = bufnr('$')
 	let _i = 1
@@ -1247,7 +1247,7 @@ function! <SID>InitializeMRUList()
 		let s:MRUList = s:MRUList.','.bufnr("#")
 	end
 	let s:MRUList = s:MRUList.','
-	
+
 	" then proceed with the rest of the buffers
 	while _i <= nBufs
 		" dont keep unlisted buffers in the MRU list.
@@ -1286,7 +1286,7 @@ function! <SID>EditDir(event)
 	if !isdirectory(name)
 		return
 	endif
-	
+
 	" if it is, then call the modified explorer.vim's Explore command.
 	if a:event != "VimEnter"
  		if exists(":Explore")
@@ -1303,7 +1303,7 @@ function! <SID>EditDir(event)
 	" the top-left, this will be unintuitive.
 	if a:event == "VimEnter"
 		bwipeout
-		
+
 		call s:StartWindowsManager()
 		call s:MRUPush()
 		call s:GotoExplorerWindow('1')

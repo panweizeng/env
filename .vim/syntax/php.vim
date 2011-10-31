@@ -556,7 +556,7 @@ syn case ignore
     " functions/methods/classes
     syn cluster phpClTop add=@phpClInFunction,@phpClInMethod,@phpClInClass
   endif
-  
+
   " Note: these are the old clusters ... they are deprecated now, but still
   " here just in case someone is using them elsewhere
   syn cluster phpClInside add=@phpClExpressions
@@ -1364,7 +1364,7 @@ syn case ignore
   syn keyword phpFunctions contained checkdate date_create date_date_set date_default_timezone_get date_default_timezone_set date_format date_isodate_set date_modify date_offset_get date_parse date_sun_info date_sunrise date_sunset date_time_set date_timezone_get date_timezone_set date getdate gettimeofday gmdate gmmktime gmstrftime idate localtime microtime mktime strftime strptime strtotime time timezone_abbreviations_list timezone_identifiers_list timezone_name_from_abbr timezone_name_get timezone_offset_get timezone_open timezone_transitions_get
   syn keyword phpClasses contained DateTime DateTimeZone
 
-  " Database (dbm-style) Abstraction Layer Functions 
+  " Database (dbm-style) Abstraction Layer Functions
   syn keyword phpFunctions contained dba_close dba_delete dba_exists dba_fetch dba_firstkey dba_handlers dba_insert dba_key_split dba_list dba_nextkey dba_open dba_optimize dba_popen dba_replace dba_sync
 
   " dBase functions
@@ -1436,7 +1436,7 @@ syn case ignore
   syn keyword phpFunctions contained basename chgrp chmod chown clearstatcache copy delete dirname disk_free_space disk_total_space diskfreespace fclose feof fflush fgetc fgetcsv fgets fgetss file_exists file_get_contents file_put_contents file fileatime filectime filegroup fileinode filemtime fileowner fileperms filesize filetype flock fnmatch fopen fpassthru fputcsv fputs fread fscanf fseek fstat ftell ftruncate fwrite glob is_dir is_executable is_file is_link is_readable is_uploaded_file is_writable is_writeable lchgrp lchown link linkinfo lstat mkdir move_uploaded_file parse_ini_file pathinfo pclose popen readfile readlink realpath rename rewind rmdir set_file_buffer stat symlink tempnam tmpfile touch umask unlink
 
   " Filter extension
-  syn keyword phpCoreConstant contained INPUT_POST INPUT_GET INPUT_COOKIE INPUT_ENV INPUT_SERVER INPUT_SESSION INPUT_REQUEST FILTER_FLAG_NONE FILTER_REQUIRE_SCALAR FILTER_REQUIRE_ARRAY FILTER_FORCE_ARRAY FILTER_NULL_ON_FAILURE FILTER_VALIDATE_INT FILTER_VALIDATE_BOOLEAN FILTER_VALIDATE_FLOAT FILTER_VALIDATE_REGEXP FILTER_VALIDATE_URL FILTER_VALIDATE_EMAIL FILTER_VALIDATE_IP FILTER_DEFAULT FILTER_UNSAFE_RAW FILTER_SANITIZE_STRING FILTER_SANITIZE_STRIPPED FILTER_SANITIZE_ENCODED FILTER_SANITIZE_SPECIAL_CHARS FILTER_SANITIZE_EMAIL FILTER_SANITIZE_URL FILTER_SANITIZE_NUMBER_INT FILTER_SANITIZE_NUMBER_FLOAT FILTER_SANITIZE_MAGIC_QUOTES FILTER_CALLBACK FILTER_FLAG_ALLOW_OCTAL FILTER_FLAG_ALLOW_HEX FILTER_FLAG_STRIP_LOW FILTER_FLAG_STRIP_HIGH FILTER_FLAG_ENCODE_LOW FILTER_FLAG_ENCODE_HIGH FILTER_FLAG_ENCODE_AMP FILTER_FLAG_NO_ENCODE_QUOTES FILTER_FLAG_EMPTY_STRING_NULL FILTER_FLAG_ALLOW_FRACTION FILTER_FLAG_ALLOW_THOUSAND FILTER_FLAG_ALLOW_SCIENTIFIC FILTER_FLAG_SCHEME_REQUIRED FILTER_FLAG_HOST_REQUIRED FILTER_FLAG_PATH_REQUIRED FILTER_FLAG_QUERY_REQUIRED FILTER_FLAG_IPV4 FILTER_FLAG_IPV6 FILTER_FLAG_NO_RES_RANGE FILTER_FLAG_NO_PRIV_RANGE 
+  syn keyword phpCoreConstant contained INPUT_POST INPUT_GET INPUT_COOKIE INPUT_ENV INPUT_SERVER INPUT_SESSION INPUT_REQUEST FILTER_FLAG_NONE FILTER_REQUIRE_SCALAR FILTER_REQUIRE_ARRAY FILTER_FORCE_ARRAY FILTER_NULL_ON_FAILURE FILTER_VALIDATE_INT FILTER_VALIDATE_BOOLEAN FILTER_VALIDATE_FLOAT FILTER_VALIDATE_REGEXP FILTER_VALIDATE_URL FILTER_VALIDATE_EMAIL FILTER_VALIDATE_IP FILTER_DEFAULT FILTER_UNSAFE_RAW FILTER_SANITIZE_STRING FILTER_SANITIZE_STRIPPED FILTER_SANITIZE_ENCODED FILTER_SANITIZE_SPECIAL_CHARS FILTER_SANITIZE_EMAIL FILTER_SANITIZE_URL FILTER_SANITIZE_NUMBER_INT FILTER_SANITIZE_NUMBER_FLOAT FILTER_SANITIZE_MAGIC_QUOTES FILTER_CALLBACK FILTER_FLAG_ALLOW_OCTAL FILTER_FLAG_ALLOW_HEX FILTER_FLAG_STRIP_LOW FILTER_FLAG_STRIP_HIGH FILTER_FLAG_ENCODE_LOW FILTER_FLAG_ENCODE_HIGH FILTER_FLAG_ENCODE_AMP FILTER_FLAG_NO_ENCODE_QUOTES FILTER_FLAG_EMPTY_STRING_NULL FILTER_FLAG_ALLOW_FRACTION FILTER_FLAG_ALLOW_THOUSAND FILTER_FLAG_ALLOW_SCIENTIFIC FILTER_FLAG_SCHEME_REQUIRED FILTER_FLAG_HOST_REQUIRED FILTER_FLAG_PATH_REQUIRED FILTER_FLAG_QUERY_REQUIRED FILTER_FLAG_IPV4 FILTER_FLAG_IPV6 FILTER_FLAG_NO_RES_RANGE FILTER_FLAG_NO_PRIV_RANGE
   syn keyword phpFunctions contained filter_has_var filter_id filter_input_array filter_input filter_list filter_var_array filter_var
 
   " Firebird / interbase functions
@@ -1494,7 +1494,7 @@ syn case ignore
   syn keyword phpFunctions contained hw_Array2Objrec hw_changeobject hw_Children hw_ChildrenObj hw_Close hw_Connect hw_connection_info hw_cp hw_Deleteobject hw_DocByAnchor hw_DocByAnchorObj hw_Document_Attributes hw_Document_BodyTag hw_Document_Content hw_Document_SetContent hw_Document_Size hw_dummy hw_EditText hw_Error hw_ErrorMsg hw_Free_Document hw_GetAnchors hw_GetAnchorsObj hw_GetAndLock hw_GetChildColl hw_GetChildCollObj hw_GetChildDocColl hw_GetChildDocCollObj hw_GetObject hw_GetObjectByQuery hw_GetObjectByQueryColl hw_GetObjectByQueryCollObj hw_GetObjectByQueryObj hw_GetParents hw_GetParentsObj hw_getrellink hw_GetRemote hw_getremotechildren hw_GetSrcByDestObj hw_GetText hw_getusername hw_Identify hw_InCollections hw_Info hw_InsColl hw_InsDoc hw_insertanchors hw_InsertDocument hw_InsertObject hw_mapid hw_Modifyobject hw_mv hw_New_Document hw_objrec2array hw_Output_Document hw_pConnect hw_PipeDocument hw_Root hw_setlinkroot hw_stat hw_Unlock hw_Who
 
   " Hyperwave API
-  syn keyword phpClasses contained HW_API HW_API_Object HW_API_Attribute HW_API_Error HW_API_Content HW_API_Reason 
+  syn keyword phpClasses contained HW_API HW_API_Object HW_API_Attribute HW_API_Error HW_API_Content HW_API_Reason
   syn keyword phpFunctions contained hw_api_object hw_api_content hwapi_hgcsp hw_api_attribute
 
   " NOTE: i18n functions are not yet available
@@ -1600,7 +1600,7 @@ syn case ignore
   syn keyword phpFunctions contained memcache_add memcache_add_server memcache_close memcache_connect memcache_debug memcache_decrement memcache_delete memcache_flush memcache_get memcache_get_extended_stats memcache_get_server_status memcache_get_stats memcache_get_version memcache_increment memcache_pconnect memcache_replace memcache_set memcache_set_compress_threshold memcache_set_server_params
 
   " MHash functions
-  syn keyword phpCoreConstant contained MHASH_ADLER32 MHASH_CRC32 MHASH_CRC32B MHASH_GOST MHASH_HAVAL128 MHASH_HAVAL160 MHASH_HAVAL192 MHASH_HAVAL256 MHASH_MD4 MHASH_MD5 MHASH_RIPEMD160 MHASH_SHA1 MHASH_SHA256 MHASH_TIGER MHASH_TIGER128 MHASH_TIGER160 
+  syn keyword phpCoreConstant contained MHASH_ADLER32 MHASH_CRC32 MHASH_CRC32B MHASH_GOST MHASH_HAVAL128 MHASH_HAVAL160 MHASH_HAVAL192 MHASH_HAVAL256 MHASH_MD4 MHASH_MD5 MHASH_RIPEMD160 MHASH_SHA1 MHASH_SHA256 MHASH_TIGER MHASH_TIGER128 MHASH_TIGER160
   syn keyword phpFunctions contained mhash_count mhash_get_block_size mhash_get_hash_name mhash_keygen_s2k mhash
 
   " Mimetype functions
@@ -1821,7 +1821,7 @@ syn case ignore
   syn keyword phpFunctions	spl_autoload_register spl_autoload_unregister spl_autoload
   syn keyword phpFunctions	spl_classes spl_object_hash
   syn keyword phpFunctions	class_implements class_parents iterator_count iterator_to_array
-  
+
   " }}}2
 
   if s:show_baselib
@@ -2143,7 +2143,7 @@ if s:strict_blocks
 
   " CLASSES: class myFoo extends baseFoo implements foo, Iterator { }: {{{2
   " I MATCH: <class myFoo> extends baseFoo implements foo, Iterator { }: {{{3
-  
+
     " 2: match the start of the class declaration
     syn keyword phpStructure contained class
           \ nextgroup=phpDefineClassName skipwhite skipempty
@@ -2238,7 +2238,7 @@ if s:strict_blocks
 
   " INTERFACES: interface myFoo extends baseFoo { }: {{{2
   " I MATCH: <interface myFoo> extends baseFoo { }: {{{3
-  
+
     " 1: match the start of the interface declaration
     syn keyword phpStructure contained interface
           \ nextgroup=phpDefineInterfaceName skipwhite skipempty
@@ -2391,7 +2391,7 @@ if s:strict_blocks
     "    NOTE: how the function block will end at the next function
     "    declaration: this helps stop the region extending indefinitely,
     "    forcing the recalculation of all { } blocks for the rest of the file.
-    "    Otherwise, inserting an open-brace will 
+    "    Otherwise, inserting an open-brace will
     "    NOTE: that the error can't happen on a 'final', 'abstract', 'class',
     "    or 'interface' keyword because they can't be contained in a function
     syn cluster phpClDefineFuncBlock add=phpFuncBlock
@@ -2493,12 +2493,12 @@ if s:strict_blocks
   " EXCEPTIONS: try/catch { } {{{2
 
     syn cluster phpClCode add=phpException
-  
+
     " 1: match the start of a try block
     syn keyword phpException try contained nextgroup=@phpClTryBlock skipwhite skipnl
 
     " TODO: 2: allow having comments preceding the { } block?
-  
+
     " 3: match the try block
     syn cluster phpClTryBlock add=phpTryBlock
     " TODO: manual folding from here (search for \<fold\>)
@@ -2670,13 +2670,13 @@ syn keyword phpSPLMethods contained hasChildren getChildren current next key val
 " OuterIterator
 syn keyword phpSPLMethods contained getInnerIterator current next key valid rewind
 " SeekableIterator
-syn keyword phpSPLMethods contained seek current next key valid rewind 
+syn keyword phpSPLMethods contained seek current next key valid rewind
 " Countable
-syn keyword phpSPLMethods contained count 
+syn keyword phpSPLMethods contained count
 " SplObserver
 syn keyword phpSPLMethods contained update
 " SplSubject
-syn keyword phpSPLMethods contained attach detach notify 
+syn keyword phpSPLMethods contained attach detach notify
 " Reflector
 syn keyword phpSPLMethods contained export
 hi link phpSPLMethods phpSpecialMethods
@@ -3103,9 +3103,9 @@ if s:show_pcre
       syn match pregClassExcEscapeKnown /\\\o\{1,3}/ contained display
         \ containedin=@pregClassExc_Q,@pregClassExcRange_Q
 
-      syn match pregClassEscapeMainQuote /\\'/ contained transparent display contains=pregEscapePHP 
+      syn match pregClassEscapeMainQuote /\\'/ contained transparent display contains=pregEscapePHP
         \ containedin=@pregClass_any_S,@pregClassRange_any_S
-      syn match pregClassEscapeMainQuote /\\"/ contained transparent display contains=pregEscapePHP 
+      syn match pregClassEscapeMainQuote /\\"/ contained transparent display contains=pregEscapePHP
         \ containedin=@pregClass_any_D,@pregClassRange_any_D
 
       syn match pregClassEscape /\\\\\ze\\'/ contained display
@@ -3262,7 +3262,7 @@ if s:show_pcre
         else
           syn match phpPREGArray /\%((\_s*\)\@<=array/ contained
                 \ nextgroup=phpPREGArrayRegion skipwhite skipempty
-          
+
           syn region phpPREGArrayRegion matchgroup=phpParent start=/(/ end=/)/
                 \ keepend extend
                 \ contained
@@ -3272,9 +3272,9 @@ if s:show_pcre
 
         " a special match to open a pattern string immediately after a '('
         " TODO: will this work as a match instead?
-"        syn region phpPREGStringStarter start=/\%((\_s*\)\@<=\z(['"]\)/ end=/\z1/ extend 
+"        syn region phpPREGStringStarter start=/\%((\_s*\)\@<=\z(['"]\)/ end=/\z1/ extend
 "              \ contained contains=@phpPREGString_any
-        syn match phpPREGStringStarter /\%((\_s*\)\@<=['"]/ extend 
+        syn match phpPREGStringStarter /\%((\_s*\)\@<=['"]/ extend
               \ contained contains=@phpPREGString_any
 
         " TODO: move 'hi link' commands out of here
@@ -3518,7 +3518,7 @@ if s:show_pcre
       hi link pregClassQuoteError Error
 
     " }}}
-      
+
     " 9) Look for escaping using \Q and \E {{{
       syn region pregNonSpecial_S matchgroup=pregParens start=/\C\\Q/ end=/\C\\E/
             \ contained containedin=pregPattern_S

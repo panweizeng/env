@@ -202,7 +202,7 @@ vimrc 文件可以包含任何冒号命令。最简单的是设置选项命令�
 让我们来分解一下这个命令：
     <F5>	F5 功能键。这是命令的触发器。当这个键被按下时，相应的命令即被
 		执行。
-    
+
     i{<Esc>     插入 { 字符。<Esc> 键用于退出插入模式。
 
     e		移动到词尾。
@@ -285,7 +285,7 @@ Vim 中有两种插件：
 
 除了把这些插件直接放进 plugin/ 目录以外，还可以更好地组织一下，把它们放进
 plugin 的单独的子目录中。例如，可以考虑把所有 Perl 插件放置在
-"~/.vim/plugin/perl/*.vim" 
+"~/.vim/plugin/perl/*.vim"
 
 
 文件类型插件			 *add-filetype-plugin* *ftplugins*
@@ -332,7 +332,7 @@ Vim 的发布中包括一套针对不同文件类型的插件。你可以用如�
 	mkdir $VIM/vimfiles/ftplugin/fortran
 	copy thefile $VIM/vimfiles/ftplugin/fortran/too.vim
 
-总的来说，一个文件类型相关的插件的名称是： 
+总的来说，一个文件类型相关的插件的名称是：
 >
 	ftplugin/<filetype>.vim
 	ftplugin/<filetype>_<name>.vim

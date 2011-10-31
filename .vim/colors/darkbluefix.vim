@@ -16,7 +16,7 @@ let colors_name = "darkbluefix"
 
 hi TabLine     cterm=none ctermfg=lightgrey ctermbg=lightblue guifg=gray guibg=black
 hi TabLineSel  cterm=none ctermfg=lightgrey ctermbg=LightMagenta guifg=white guibg=black
-hi TabLineFill cterm=none ctermfg=lightblue ctermbg=lightblue guifg=black guibg=black 
+hi TabLineFill cterm=none ctermfg=lightblue ctermbg=lightblue guifg=black guibg=black
 
 hi Normal		guifg=#c0c0c0 guibg=#000040						ctermfg=gray ctermbg=black
 hi ErrorMsg		guifg=#ffffff guibg=#287eff						ctermfg=white ctermbg=lightblue

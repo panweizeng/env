@@ -338,7 +338,7 @@ SaveIt: >
 	-register		你可以指定一个寄存器。(缺省为无名寄存器。)
 				指定的寄存器可通过 <reg> (即 <register>) 来操
 				作。
-	-complete={type}	给出命令行补全的方式。|:command-completion| 
+	-complete={type}	给出命令行补全的方式。|:command-completion|
 				列出了所有可用值。
 	-bar			命令后可用 | 加另外一个命令，或 " 加一个注释。
 	-buffer			命令仅对当前缓冲区有效。
@@ -423,7 +423,7 @@ Filetype 事件。你可以利用这个来为某一类型的文件做编辑的�
 在 |autocmd-events| 可以找到一个完整的事件列表。
 
 
-匹 配 模 式 
+匹 配 模 式
 
 那个 {file_pattern} 参数实际上可以是一个以逗号分割开的模式列表。例如:
 "*.c,*.h" 匹配所有文件名以 ".c" 和 ".h" 结尾的文件。

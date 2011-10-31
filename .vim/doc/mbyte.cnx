@@ -145,7 +145,7 @@ locale，或者只在 Vim 内部使用特定的 locale。
 "/usr/lib/locale"，具体请看 setlocale() 的手册页。
 
 在这些目录里你可以看到每个 locale 的全称，它们也区别大小写，因此 "ja_JP.EUC"
-和 "ja_jp.euc" 不同。有的系统有一个 locale.alias 文件，它允许一个简称如 "nl" 
+和 "ja_jp.euc" 不同。有的系统有一个 locale.alias 文件，它允许一个简称如 "nl"
 和它的全称 "nl_NL.ISO_8859-1" 转化。
 
 备注: X-windows 有自己的 locale 设置，不幸的是它使用的 locale 名也和其它地方不
@@ -303,7 +303,7 @@ u   ucs-4le	类似于 ucs-4，little endian
 2   japan	日语: Unix 上的 "euc-jp"，MS-Windows 上的 cp932
 2   korea	韩语: Unix 上的 "euc-kr"，MS-Windows 上的 cp949
 2   prc		简体中文: Unix 上的 "euc-cn"，MS-Windows 上的 cp936
-2   chinese	等同于 "prc" 
+2   chinese	等同于 "prc"
 2   taiwan	繁体中文: Unix 上的 "euc-tw"，MS-Windows 上的 cp950
 u   utf8	同 utf-8
 u   unicode	同 ucs-2
@@ -357,7 +357,7 @@ iconv() 的功能影响。因为这取决于你所用的系统，这里无法给
  8bit	   Unicode	可以转换，但是你只能直接输入 8bit 字符 (其它字符可以通
  			过二合字母、键盘映射表等方式输入)，在终端下你只能看到
 			8bit 字符，GUI 上可以看到 'guifont' 支持的所有字符。
-			
+
  2byte	    8bit	可以转换，但是输入非 ASCII 字符可能会有问题。
  2byte	   2byte	MS-Windows：支持系统安装的所有的代码页之间的转换，当
  			locale 和 'encoding' 不同时输入可能会有问题。

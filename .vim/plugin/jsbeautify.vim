@@ -11,7 +11,7 @@ function! s:trim_output()
 	endwhile
 endfunction
 
-function! s:print_newline(ignore_repeated) 
+function! s:print_newline(ignore_repeated)
 	let s:if_line_flag = 0
 	call s:trim_output()
 	if len(s:output)==0
@@ -85,7 +85,7 @@ function! s:get_next_token()
 	let c = s:input[s:parser_pos]
 	let s:parser_pos += 1
 
-	while s:in_array(c, s:whitespace) 
+	while s:in_array(c, s:whitespace)
 		if s:parser_pos >= len(s:input)
 			return ["", "TK_EOF"]
 		endif
@@ -99,10 +99,10 @@ function! s:get_next_token()
 	endwhile
 
 	let wanted_newline = 0
-	
+
 	if s:opt_preserve_newlines
 		if n_newlines > 1
-			for i in [0, 1] 
+			for i in [0, 1]
 				call s:print_newline(i==0)
 			endfor
 		endif
@@ -161,7 +161,7 @@ function! s:get_next_token()
 		let comment = ""
 		if s:input[s:parser_pos] == "*"
 			let s:parser_pos += 1
-			if s:parser_pos < len(s:input) 
+			if s:parser_pos < len(s:input)
 				while !(s:input[s:parser_pos] == "*" && s:parser_pos + 1 < len(s:input) && s:input[s:parser_pos + 1] == "/" && s:parser_pos < len(s:input))
 					let comment .= s:input[s:parser_pos]
 					let s:parser_pos += 1
@@ -217,7 +217,7 @@ function! s:get_next_token()
 		let resulting_string .= sep
 
 		if sep == "/"
-			
+
 			while s:parser_pos < len(s:input) && s:in_array(s:input[s:parser_pos], s:wordchar)
 				let resulting_string .= s:input[s:parser_pos]
 				let s:parser_pos += 1
@@ -247,7 +247,7 @@ function! s:get_next_token()
 		endif
 	endif
 
-	if c == "<" && s:input[s:parser_pos-1 : s:parser_pos+3] == "<!--"				
+	if c == "<" && s:input[s:parser_pos-1 : s:parser_pos+3] == "<!--"
 		let s:parser_pos += 3
 		return ["<!--", "TK_COMMENT"]
 	endif
@@ -275,7 +275,7 @@ function! s:get_next_token()
 		return [c, "TK_UNKNOWN"]
 	endif
 
-	
+
 
 endfunction
 
@@ -298,7 +298,7 @@ function! g:Jsbeautify()
 
 	let s:if_line_flag = 0
 	"--------------------------------
-	
+
 	let s:indent_string = ""
 	while s:opt_indent_size > 0
 		let s:indent_string .= s:opt_indent_char
@@ -310,7 +310,7 @@ function! g:Jsbeautify()
 	let lines = getline(1, "$")
 	let s:input = join(lines, "\n")
 	"let s:input = a:js_source_text
-	
+
 	let s:last_word = "" "last 'TK_WORD' passed
 	let s:last_type = "TK_START_EXPR" "last token type
 	let s:last_text = "" "last token text
@@ -323,7 +323,7 @@ function! g:Jsbeautify()
 	let s:whitespace = ["\n", "\r", "\t", " "]
 	let s:wordchar = split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_$", '\zs')
 	let s:digits = split("0123456789", '\zs')
-	
+
 	"<!-- is a special case (ok, it"s a minor hack actually)
 	let s:punct = split("+ - * / % & ++ -- = += -= *= /= %= == === != !== > < >= <= >> << >>> >>>= >>= <<= && &= | || ! !! , : ? ^ ^= |= ::", " ")
 
@@ -341,7 +341,7 @@ function! g:Jsbeautify()
 		if s:token_type == "TK_EOF"
 			break
 		endif
-		
+
 		try
 			if s:token_type == "TK_START_EXPR"
 				let s:var_line = 0
@@ -417,7 +417,7 @@ function! g:Jsbeautify()
 				if s:last_type == "TK_END_BLOCK"
 					if !s:in_array(tolower(s:token_text), ["else", "catch", "finally"])
 						let s:prefix = "NEWLINE"
-					else 
+					else
 						let s:prefix = "SPACE"
 						call s:print_space()
 					endif
@@ -481,7 +481,7 @@ function! g:Jsbeautify()
 			elseif s:token_type == "TK_SEMICOLON"
 				call s:print_token()
 				let s:var_line = 0
-			
+
 			elseif s:token_type == "TK_STRING"
 				if s:last_type == "TK_START_BLOCK" || s:last_type == "TK_END_BLOCK" || s:last_type == "TK_SEMICOLON"
 					call s:print_newline(1)
@@ -548,7 +548,7 @@ function! g:Jsbeautify()
 						" space for (;; ++i)
 						let start_delim = 1
 						let end_delim = 0
-					else 
+					else
 						let start_delim = 0
 						let end_delim = 0
 					endif
@@ -592,7 +592,7 @@ function! g:Jsbeautify()
 				call s:print_newline(1)
 				call s:print_token()
 				call s:print_newline(1)
-				
+
 			elseif s:token_type == "TK_COMMENT"
 
 				"call s:print_newline(1)
@@ -606,14 +606,14 @@ function! g:Jsbeautify()
 			endif
 		catch /.*/
 			if v:exception != 'jump out'
-				echo "exception caught: " v:exception 
+				echo "exception caught: " v:exception
 			endif
 		endtry
 
 		let s:last_type = s:token_type
 		let s:last_text = s:token_text
 	endwhile
-	
+
 	let ret = join(s:output, "")
 	:g/.*/d
 	let @0 = ret

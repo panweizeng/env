@@ -1367,7 +1367,7 @@ v:scrollstart	指示使屏幕上滚的脚本或函数的字符串。只有在原
 v:servername	如果有的话，注册过的 |x11-clientserver| 名字。
 		只读。
 
-		
+
 v:searchforward			*v:searchforward* *searchforward-variable*
 		搜索方向: 正向搜索后为 1，反向搜索后为 0。直接设置最近搜索模式
 		会复位此值为正向，见 |quote/|。
@@ -1862,7 +1862,7 @@ bufloaded({expr})					*bufloaded()*
 		{expr} 参数用法同 |bufexists()|。
 
 bufname({expr})						*bufname()*
-		返回缓冲区的名字，如同 ":ls" 命令显示的那样。	
+		返回缓冲区的名字，如同 ":ls" 命令显示的那样。
 		如果 {expr} 参数是数值，指定缓冲区号。数值零代表当前窗口的轮换
 		缓冲区。
 		如果 {expr} 参数是字符串，它用作 |file-pattern| 来匹配缓冲区名
@@ -3631,7 +3631,7 @@ pow({x}, {y})						*pow()*
 			:echo pow(32, 0.20)
 <			2.0
 		{仅当编译时加入 |+float| 特性才有效}
-		
+
 prevnonblank({lnum})					*prevnonblank()*
 		返回第一个 {lnum} 所在或之上的非空白行的行号。例如: >
 			let ind = indent(prevnonblank(v:lnum - 1))
@@ -4029,7 +4029,7 @@ search({pattern} [, {flags} [, {stopline} [, {timeout}]]])	*search()*
 
 searchdecl({name} [, {global} [, {thisblock}]])			*searchdecl()*
 		搜索 {name} 的声明。
-		
+
 		如果 {global} 参数非零，使用 |gD| 的工作方式，寻找文件的第一个
 		匹配。否则使用 |gd| 的工作方式，寻找函数里的第一个匹配。
 
@@ -4246,7 +4246,7 @@ setqflist({list} [, {action}])				*setqflist()*
 		    nr		错误号
 		    text	错误描述
 		    type	错误类型，'E'、'W' 等。
-	
+
 		"col"、"vcol"、"nr"、"type" 和 "text" 项目是可选的。"lnum" 或
 		"pattern" 项目用来定位匹配的错误行。
 		如果 "filename" 和 "bufnr" 项目都不存在或者 "lnum" 和
@@ -4305,7 +4305,7 @@ settabwinvar({tabnr}, {winnr}, {varname}, {val})	*settabwinvar()*
 		冲区的变量。
 		如果设置局部于缓冲区的选项，全局值不会改变。
 		注意 必须使用不带 "w:" 的变量名。
-		Vim 短暂地进入标签页 {tabnr}，所以会激活 TabLeave 和 TabEnter 
+		Vim 短暂地进入标签页 {tabnr}，所以会激活 TabLeave 和 TabEnter
 		自动命令。
 		示例: >
 			:call settabwinvar(1, 1, "&list", 0)
@@ -6858,7 +6858,7 @@ Geddes 提供的方法)
     redir => scriptnames_output
     silent scriptnames
     redir END
-    
+
     " 把输出分拆为行，并对每行进行分析。在 "script" 字典中加入项目。
     let scripts = {}
     for line in split(scriptnames_output, "\n")

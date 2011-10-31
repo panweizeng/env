@@ -1,8 +1,8 @@
 *usr_20.txt*	For Vim version 7.2.	最近更新：2005年3月
 
 		     VIM 用户手册 - Bram Moolenaar 著
-		  译者： Chimin Yen http://vimcdoc.sf.net 
-				    
+		  译者： Chimin Yen http://vimcdoc.sf.net
+
 			     快速键入命令行命令
 
 Vim 具备若干基本功能，以简化键入命令的工作。你可以缩写，编辑和重复冒号命令，而
