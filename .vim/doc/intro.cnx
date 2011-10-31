@@ -2,7 +2,7 @@
 
 
 		  VIM 参 考 手 册	作者：Bram Moolenaar
-		  			译者：Dasn, tocer 
+		  			译者：Dasn, tocer
 					http://vimcdoc.sf.net
 
 
@@ -178,7 +178,7 @@ Vim 编辑器是在 Stevie 的基础上并汲取了其它软件的思想开发�
 	Marcin Dalecki		GTK+ 图形界面的移植，工具栏的图标，gettext()
 	Kayhan Demirel		给我发送乌干达的信息
 	Chris & John Downey	xvi (多窗口的思想)
-	Henk Elbers		最先移植到 VMS 
+	Henk Elbers		最先移植到 VMS
 	Daniel Elstner		GTK+ 2 移植
 	Eric Fischer		Mac 系统移植、'cindent'、其它的改进
 	Benji Fisher		解答用户问题
@@ -199,9 +199,9 @@ Vim 编辑器是在 Stevie 的基础上并汲取了其它软件的思想开发�
 	David Leonard		将 Python 扩展移植到 Unix
 	Avner Lottem		在窗口里从左向右编辑
 	Flemming Madsen		X11 客户端－服务器，许多功能和补丁
-	Microsoft		给我一份 DevStudio 的拷贝来编译 Vim 
+	Microsoft		给我一份 DevStudio 的拷贝来编译 Vim
 	Paul Moore		Python 接口的扩展，许多补丁
-	Katsuhito Nagano	多字节版本 
+	Katsuhito Nagano	多字节版本
 	Sung-Hyun Nam		多字节版本
 	Vince Negri		加强了 Win32 图形界面和控制台版本
 	Steve Oualline		第一本介绍 Vim 的书的作者 |frombook|
@@ -364,7 +364,7 @@ CTRL-{char}	作为控制字符输入的 {char}；也就是说，按住 CTRL 键�
 <Down>		光标下移键			*cursor-down* *cursor_down*
 <Left>		光标左移键			*cursor-left* *cursor_left*
 <Right>		光标右移键			*cursor-right* *cursor_right*
-<S-Up>		Shift＋光标上移键	
+<S-Up>		Shift＋光标上移键
 <S-Down>	Shift＋光标下移键
 <S-Left>	Shift＋光标左移键
 <S-Right>	Shift＋光标右移键
@@ -452,7 +452,7 @@ Vim 有六种基本模式：
 
 					*Normal* *Normal-mode* *command-mode*
 普通模式		在普通 (normal) 模式里，你可以输入所有的普通编辑命令。
-			启动编辑器之后就处于该模式 (除非你置位了 'insertmode' 
+			启动编辑器之后就处于该模式 (除非你置位了 'insertmode'
 			选项，下面会有说明)。亦称为命令 (command) 模式。
 
 
@@ -562,11 +562,11 @@ Ex		 :vi	  --	  --	 --	    --	      --
    - 如果 'selectmode' 里包含 "key"，那么按住 Shift 键然后用不可显示的命令来移
      动光标。
    - 如果 'selectmode' 包含 "cmd"，那么用 "v"、"V" 或 "CTRL-V"
-   - 使用 "gh"、"gH" 或 "g CTRL-H" 
+   - 使用 "gh"、"gH" 或 "g CTRL-H"
 *5 使用不可显示的命令移动光标 (不要按 Shift) 可以从选择模式转到普通模式。
 *6 输入一个可显示字符可以从选择模式切换到插入模式。插入该字符的同时删除被选择
    的部分。
-   
+
 如果打开了 'insertmode' 选项，编辑文件时将直接进入插入模式。
 
 	*CTRL-\_CTRL-N* *i_CTRL-\_CTRL-N* *c_CTRL-\_CTRL-N* *v_CTRL-\_CTRL-N*
@@ -660,7 +660,7 @@ gQ			同 "Q"，切换到 "Ex" 模式，但与一条接一条的 ":" 命令相
 							*wrap-off*
 如果关闭了 'wrap' 选项，长行不会被回绕。只显示能放到窗口里的那一部分。如果光标
 移动到没有显示的部分，屏幕会水平方向滚动。这样做的好处是可以正常显示文本列而窗
-口里放不下的行也可编辑。缺点是你不能一次看见一行的所有字符。选项 'sidescroll' 
+口里放不下的行也可编辑。缺点是你不能一次看见一行的所有字符。选项 'sidescroll'
 可以设定滚动列数的最小值。{Vi: 没有 'wrap' 选项}
 
 所有正常的 ASCII 字符直接显示在屏幕上。<Tab> 用相应数量的空白代替。其余不可显
@@ -671,7 +671,7 @@ gQ			同 "Q"，切换到 "Ex" 模式，但与一条接一条的 ":" 命令相
 
 如果你置位了 'number' 选项，所有的行前面会加行号。提示：如果你不喜欢回绕的行混
 淆了行号，可以把 'showbreak' 选项设置成八个空格： >
-	:set showbreak=\ \ \ \ \ \ \ \ 
+	:set showbreak=\ \ \ \ \ \ \ \
 <
 如果你置位了 'list' 选项，<Tab> 字符不会显示成多个空格，而是 "^I"。'$' 字符会
 出现在每一行的末尾，这样你可以发现尾部的空白字符。
@@ -760,10 +760,10 @@ gQ			同 "Q"，切换到 "Ex" 模式，但与一条接一条的 ":" 命令相
 						8.  ccc ccc c
 1. aaa		1. aaa		1. aaa		9.  cc
 2. bbb		2. bbb		2. bbb		10. ddd
-3. ccc ccc ccc	3. ccc ccc ccc	3. ccc ccc c	11. ~ 
+3. ccc ccc ccc	3. ccc ccc ccc	3. ccc ccc c	11. ~
 4. ddd		4. ddd		4. cc		12. === 状态行 ===
 				5. ddd		13. (命令行)
-				6. ~ 
+				6. ~
 
 ==============================================================================
  vim:tw=78:ts=8:ft=help:norl:

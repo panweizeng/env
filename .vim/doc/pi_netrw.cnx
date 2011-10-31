@@ -1063,15 +1063,15 @@ OpenOffice (*.sfx)、可视文件 (*.jpg、*.gif 等) 和 PostScript (*.ps、 *.
 	..对文件名进行特殊处理..
 	endfun
 <
-这些函数需要在你的 .vim/plugin (vimfiles\plugin) 目录下的某个文件里定义。Vim 
+这些函数需要在你的 .vim/plugin (vimfiles\plugin) 目录下的某个文件里定义。Vim
 的函数名不能包含标点符号 (除了下划线以外)。要支持包含这类字符的后缀，netrw 会
 先按照下表对后缀进行转换: >
 
-    @ -> AT       ! -> EXCLAMATION    % -> PERCENT  
-    : -> COLON    = -> EQUAL          ? -> QUESTION 
+    @ -> AT       ! -> EXCLAMATION    % -> PERCENT
+    : -> COLON    = -> EQUAL          ? -> QUESTION
     , -> COMMA    - -> MINUS          ; -> SEMICOLON
-    $ -> DOLLAR   + -> PLUS           ~ -> TILDE    
-<    
+    $ -> DOLLAR   + -> PLUS           ~ -> TILDE
+<
 因而，对于下例: >
 
 	file.rcs,v  ->  NFH_rcsCOMMAv()
@@ -1292,7 +1292,7 @@ industrial strength tips & tools" (O'Reilly, ISBN 0-596-00461-3) 一书给出如
 	1. 在本地机器 (ssh 客户端) 上生成 公钥/私钥 对: >
 		ssh-keygen -t rsa
 		(按照提示，把该文件存到 ~/.ssh/id_rsa)
-<	   
+<
 	2. 如果不要 passphrase，提示 passphrase 时只要按 <CR> 即可 (两次)。如
 	   果需要 passphrase，你要使用 ssh-agent，从而每个会话期间只需输入一次
 	   passphrase。如果不用 passphrase，只要简单地登录到你的本地机器上或者
@@ -1405,7 +1405,7 @@ Kingston Fung 写下另一个避免不断要求输入密码的方法:
 |netrw-mu|)。
 
 *markfilelist* *global_markfilelist* *local_markfilelist*
-所有的标记文件都进入全局标记文件列表；只有唯一的这样的列表。此外，每个 netrw 
+所有的标记文件都进入全局标记文件列表；只有唯一的这样的列表。此外，每个 netrw
 缓冲区都有自己局部的标记文件列表；因为 netrw 缓冲区和特定的目录相关联，这意味
 着每个目录都有自己的局部标记文件列表。操作标记文件的命令分别使用两个标记文件列
 表中的一个。
@@ -1734,7 +1734,7 @@ NETRW 浏 览 器 变 量		*netrw-browser-options* *netrw-browser-var* {{{2
 					netrwMakefile: [mM]akefile *.mak
 					netrwObj     : *.o *.obj
 					netrwTags    : tags ANmenu ANtags
-					netrwTilde   : *~ 
+					netrwTilde   : *~
 					netrwTmp     : tmp* *tmp
 
 				这些语法高亮组缺省被链接到 Folded 或
@@ -1784,7 +1784,7 @@ NETRW 浏 览 器 变 量		*netrw-browser-options* *netrw-browser-var* {{{2
 				    circumflex 是一个占空间的代码点；硬制表符
 				    是一个；宽和窄的 CJK 都是一个；等等)
 				=3: 虚拟长度 (制表符在 1 到 |'tabstop'| 之间，
-				    宽 CJK 是 2 而不是 1，阿拉伯 alif 在 lam 
+				    宽 CJK 是 2 而不是 1，阿拉伯 alif 在 lam
 				    之前是零，否则为 1，等等)
 
   *g:NetrwTopLvlMenu*		指定顶层子菜单名；缺省为 "Netrw."。
@@ -2039,7 +2039,7 @@ g:netrw_rename_cmd 变量实现换名。缺省值为:
 <
 		'pscp' 如何使用私钥: >
 			http://www.tartarus.org/~simon/puttydoc/Chapter5.html
-			5.2.4 Using public key authentication with PSCP 
+			5.2.4 Using public key authentication with PSCP
 <
 		(Ben Schmidt) 我发现 cwRsync 所带的 ssh 太好了，现在我在自己用
 		的大多数 Windows 系统上都安装了 cwRsync 或 cwRsyncServer。对只
@@ -2066,7 +2066,7 @@ g:netrw_rename_cmd 变量实现换名。缺省值为:
 			let g:netrw_use_noswf= 0
 <
 								*netrw-p10*
-	P10. "[something] is a directory" 和 
+	P10. "[something] is a directory" 和
 	     "Press ENTER or type command to continue" 这些提示烦死我了...
 
 		"[something] is a directory" 提示是 Vim 发出的，不是 netrw，看
@@ -2128,7 +2128,7 @@ g:netrw_rename_cmd 变量实现换名。缺省值为:
 
 	3. 然后启动 vim 进行文件传输或者进行浏览以重现错误。一系列消息应该在一
 	   个单独的标签页出现，提示 <netrw.vim> 进行网络文件读写的一系列步骤。
-           
+
            要保存文件，用 >
 		:wincmd j
 		:set bt=
@@ -2378,7 +2378,7 @@ g:netrw_rename_cmd 变量实现换名。缺省值为:
 			     decipher the name.
 	      May 07, 2007 * g:netrw_use_errorwindow now allows one to
 			     have error messages go to a reliable window
-			     or to use a less reliable but recallable 
+			     or to use a less reliable but recallable
 			     echoerr method
 	      May 07, 2007 * g:netrw_scpport and g:netrw_sshport support
 			     use of -P and -p, respectively, to set port

@@ -251,7 +251,7 @@ Vim 可以记住十个出错信息列表。
 *30.3*	自动缩进
 
 你无需每次编辑 C 文件时都手工设定 'cindent' 选项。通过下面的命令你可以使它自动
-化： 
+化：
 >
 	:filetype indent on
 
@@ -284,7 +284,7 @@ Vim 识别到的文件类型名：
 
 这样你就可以用 "help" 来表示 {filetype}。
    对 {directory} 部分，你需要根据你的运行时目录来设定。请查看下面命令的输
-出： 
+出：
 >
 	set runtimepath
 
@@ -292,7 +292,7 @@ Vim 识别到的文件类型名：
 
 	runtimepath=~/.vim,/usr/local/share/vim/vim60/runtime,~/.vim/after ~
 
-你需要使用 "~/.vim" 来表示 {directory}。这样最后的文件名就是：  
+你需要使用 "~/.vim" 来表示 {directory}。这样最后的文件名就是：
 
 	~/.vim/indent/help.vim ~
 

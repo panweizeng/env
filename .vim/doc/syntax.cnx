@@ -539,7 +539,7 @@ GL 编程。支持很多的标准宏定义/常数。
 可以为内嵌的 SQL 块打开折叠，如 SELECT、SELECTDO、SELECTEMPTY，... 这里开始/结
 束关键字之前的缩进必须一致 (空格不等于制表)。 >
 	let baan_fold_sql=1
-<	
+<
 注意: 代码块级别的折叠可能产生许多小的折叠。建议在 .vimrc 里用 |:set| 设置选项
 'foldminlines' 和 'foldnestmax'，在 .../after/syntax/baan.vim 里用 |:setlocal|
 设置也可以 (见 |after-directory|)。例如: >

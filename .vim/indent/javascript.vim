@@ -12,12 +12,12 @@ let b:did_indent = 1
 setlocal indentexpr=GetJsIndent()
 setlocal indentkeys=0{,0},0),:,!^F,o,O,e,*<Return>,=*/
 " Clean CR when the file is in Unix format
-if &fileformat == "unix" 
+if &fileformat == "unix"
     silent! %s/\r$//g
 endif
 " Only define the functions once per Vim session.
 if exists("*GetJsIndent")
-    finish 
+    finish
 endif
 function! GetJsIndent()
     let pnum = prevnonblank(v:lnum - 1)
@@ -27,15 +27,15 @@ function! GetJsIndent()
     let line = getline(v:lnum)
     let pline = getline(pnum)
     let ind = indent(pnum)
-    
+
     if pline =~ '{\s*$\|[\s*$\|(\s*$'
 	let ind = ind + &sw
     endif
-    
+
     if pline =~ ';\s*$' && line =~ '^\s*}'
         let ind = ind - &sw
     endif
-    
+
     if pline =~ '\s*]\s*$' && line =~ '^\s*),\s*$'
       let ind = ind - &sw
     endif
@@ -43,27 +43,27 @@ function! GetJsIndent()
     if pline =~ '\s*]\s*$' && line =~ '^\s*}\s*$'
       let ind = ind - &sw
     endif
-    
+
     if line =~ '^\s*});\s*$\|^\s*);\s*$' && pline !~ ';\s*$'
       let ind = ind - &sw
     endif
-    
+
     if line =~ '^\s*})' && pline =~ '\s*,\s*$'
       let ind = ind - &sw
     endif
-    
+
     if line =~ '^\s*}();\s*$' && pline =~ '^\s*}\s*$'
       let ind = ind - &sw
     endif
 
-    if line =~ '^\s*}),\s*$' 
+    if line =~ '^\s*}),\s*$'
       let ind = ind - &sw
     endif
 
     if pline =~ '^\s*}\s*$' && line =~ '),\s*$'
        let ind = ind - &sw
     endif
-   
+
     if pline =~ '^\s*for\s*' && line =~ ')\s*$'
        let ind = ind + &sw
     endif

@@ -112,7 +112,7 @@ Sys_WindowFrame		Sys_WindowText
 	Sys_WindowText      正常的窗口文字颜色
 	Sys_Highlight       加亮的背景颜色
 	Sys_HighlightText   加亮的文字颜色
-	
+
 还有一些额外可供使用的颜色：
 Gray、Grey、LightYellow、SeaGreen、Orange、Purple、SlateBlue、Violet。
 

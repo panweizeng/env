@@ -276,7 +276,7 @@ MzScheme 接口						*new-MzScheme*
 用 'tabpagemax' 设置可打开的最大标签页数。
 
 标签页标签所在的行可以使用高亮的普通文本，也可以使用 GUI 的机制。GUI 标签看起
-来更舒服，但只有少数系统支持。用 'tabline'、'guitablabel' 和 'guitabtooltip' 
+来更舒服，但只有少数系统支持。用 'tabline'、'guitablabel' 和 'guitabtooltip'
 可以定制标签页行，而它显示与否则由 'showtabline' 控制。至于是否使用 GUI 标签由
 'guioptions' 的 "e" 标志位决定。
 
@@ -3952,7 +3952,7 @@ Patch 7.0.173
 问题:       ":call f().TT()" doesn't work.  (Richard Emberson)
 解决方案:   When a function returns a Dictionary or another composite continue
 	    evaluating what follows.
-相关文件:   src/eval.c    
+相关文件:   src/eval.c
 
 Patch 7.0.174
 问题:       ":mksession" doesn't restore window layout correctly in tab pages
@@ -4066,7 +4066,7 @@ Patch 7.0.192
 	    that not all blocks are loaded into memory, causing ml_get errors
 	    later.
 解决方案:   Rename "dont_release" to "mf_dont_release" and also use it to
-	    avoid using the cached line and locked block. 
+	    avoid using the cached line and locked block.
 相关文件:   src/globals.h, src/memfile.c, src/memline.c
 
 Patch 7.0.193
@@ -5825,7 +5825,7 @@ Patch 7.1.206
 相关文件:   src/version.c
 
 Patch 7.1.207
-问题:	    Netbeans: "remove" cannot delete one line. 
+问题:	    Netbeans: "remove" cannot delete one line.
 解决方案:   Remove partial lines and whole lines properly.  Avoid a memory
 	    leak.  (Xavier de Gaye)
 相关文件:   src/netbeans.c

@@ -2,7 +2,7 @@
 "
 " Maintainer: Ray Burgemeestre
 " Last Change: 2006 Aug 26
-" 
+"
 " USAGE
 "  If you enabled the script in your after/ftplugin directory (see install)
 "  then it will be executed after you open a .php file.
@@ -15,7 +15,7 @@
 "  F6 - To do the same with more extensive bracket checking (might work
 "       better if your folds are messed up due to misinterpreted brackets).
 "  F7 - To remove all folds.
-" 
+"
 " INSTALL
 "  1. Put phpfolding.vim in your plugin directory (~/.vim/plugin)
 "  2. You might want to add the following keyboard mappings to your .vimrc:
@@ -25,7 +25,7 @@
 "       map <F7> <Esc>:DisablePHPFolds<Cr>
 "
 "  3. You might want to add the following lines to php.vim in your after/ftplugin
-"     directory (~/.vim/after/ftplugin/php.vim), this will be executed after 
+"     directory (~/.vim/after/ftplugin/php.vim), this will be executed after
 "     opening a .php file:
 "
 "       " Don't use the PHP syntax folding
@@ -34,20 +34,20 @@
 "       EnableFastPHPFolds
 "
 "  It might be necessary that you load the plugin from your .vimrc, i.e.:
-"    let php_folding=0 
+"    let php_folding=0
 "      (if you can't use the after directory in step 3)
 "    source ~/path/to/phpfolding.vim
 "      (if you're not using the default plugin directory)
-" 
+"
 "  MORE INFORMATION
-"  - In PHPCustomFolds() you can i.e. comment the PHPFoldPureBlock('class', ...) 
+"  - In PHPCustomFolds() you can i.e. comment the PHPFoldPureBlock('class', ...)
 "    call to have the script not fold classes. You can also change the second
 "    parameter passed to that function call, to have it or not have it fold
 "    PhpDoc comments. All other folding you can turn on/off in this function.
 "  - You can tweak the foldtext to your liking in the function PHPFoldText().
-"  - You can set some preferences and default settings a few lines below 
+"  - You can set some preferences and default settings a few lines below
 "    at the "Script configuration" part.
-" 
+"
 "  This script is tested with Vim version >= 6.3 on windows and linux.
 
 command! EnableFastPHPFolds call <SID>EnableFastPHPFolds()
@@ -103,8 +103,8 @@ function! s:EnablePHPFolds(...) " {{{
 
 
 	" Move to end of file
-	exec s:fileLineCount	
-	
+	exec s:fileLineCount
+
 	" First pass: Look for Folds, remember opened folds
 	let s:foldingMode = s:MODE_REMEMBER_FOLD_SETTINGS
 	call s:PHPCustomFolds()
@@ -130,7 +130,7 @@ function! s:EnablePHPFolds(...) " {{{
 
 	" Restore cursor
 	exec s:savedCursor
-	
+
 endfunction
 " }}}
 function! s:DisablePHPFolds() " {{{
@@ -142,7 +142,7 @@ endfunction
 " }}}
 function! s:PHPCustomFolds() " {{{
 	" NOTE: The two last parameters for functions PHPFoldProperties() and
-	"       PHPFoldPureBlock() overwrite: 'g:searchPhpDocLineCount' and 
+	"       PHPFoldPureBlock() overwrite: 'g:searchPhpDocLineCount' and
 	"       'g:searchEmptyLinesPostfixing'..
 
 	" Fold function with PhpDoc (function foo() {})
@@ -153,7 +153,7 @@ function! s:PHPCustomFolds() " {{{
 
 	" Fold class without PhpDoc (class foo {})
 	call s:PHPFoldPureBlock('^\s*\(abstract\s*\)\?class', s:FOLD_WITH_PHPDOC)
-	
+
 	" Fold define()'s with their PhpDoc
 	call s:PHPFoldProperties('^\s*define\s*(', ";", s:FOLD_WITH_PHPDOC)
 
@@ -238,7 +238,7 @@ function! s:PHPFoldMarkers(startPattern, endPattern, ...) " {{{
 			let s:lineStart = s:FindOptionalPHPDocComment()
 			" The fourth parameter is for disabling the search for trailing
 			" empty lines..
-			let s:lineStop = s:FindPureBlockEnd(a:startPattern, a:endPattern, 
+			let s:lineStop = s:FindPureBlockEnd(a:startPattern, a:endPattern,
 				\ s:SEARCH_PAIR_IMMEDIATELY, s:FALSE)
 
 			" Stop on Error
@@ -303,7 +303,7 @@ function! s:PHPFoldProperties(startPattern, endPattern, ...) " {{{
 
 		" Goto fold start (remember we're searching upwards)
 		exec s:lineStart
-		
+
 	endwhile
 
 	if s:foldingMode != s:MODE_REMEMBER_FOLD_SETTINGS
@@ -318,7 +318,7 @@ function! s:HandleFold() " {{{
 		if foldlevel(s:lineStart) != 0
 			" .. and it is not closed..,
 			if foldclosed(s:lineStart) == -1
-                " .. and it is more then one lines 
+                " .. and it is more then one lines
                 " (it has to be or it will be open by default)
                 if s:lineStop - s:lineStart >= 1
                     " Remember it as an open fold
@@ -334,7 +334,7 @@ function! s:HandleFold() " {{{
 			let s:foldsOpenedList{s:openFoldListItems} = s:lineStart
 			let s:openFoldListItems = s:openFoldListItems + 1
 		endif
-		
+
 	elseif s:foldingMode == s:MODE_CREATE_FOLDS
 		" Correct lineStop if needed (the script might have mistaken lines
 		"   beyond the file's scope for trailing empty lines)
@@ -410,7 +410,7 @@ function! s:FindOptionalPHPDocComment() " {{{
 				if strridx(getline(checkLine), "\/\*\*") != -1
 					" Also only continue adjusting if the PHPdoc opener does
 					" not contain a '/**#@+'. Those type of comments are
-					" supposed to match with a #@- .. 
+					" supposed to match with a #@- ..
 					if strridx(getline(checkLine), '#@+') == -1
 						" .. Return this as the Fold's start
 						return checkLine
@@ -461,7 +461,7 @@ function! s:FindPureBlockEnd(startPair, endPair, searchStartPairFirst, ...) " {{
 		" Then be greedy with extra 'trailing' empty line(s)
 		let s:counter = 0
 		while s:counter < s:searchEmptyLinesPostfixing
-			let linestr = getline(line + 1)		
+			let linestr = getline(line + 1)
 			if (matchstr(linestr, '^\s*$') == linestr)
 				let line = line + 1
 			endif
@@ -480,7 +480,7 @@ function! s:FindPatternEnd(endPattern) " {{{
 		" Then be greedy with extra 'trailing' empty line(s)
 		let s:counter = 0
 		while s:counter < s:searchEmptyLinesPostfixing
-			let linestr = getline(line + 1)		
+			let linestr = getline(line + 1)
 			if (matchstr(linestr, '^\s*$') == linestr)
 				let line = line + 1
 			endif
@@ -536,9 +536,9 @@ function! PHPFoldText() " {{{
 		endwhile
 		let lineString = getline(currentLine)
 	endif
-	
+
 	" Some common replaces...
-	" if currentLine != v:foldend 
+	" if currentLine != v:foldend
 		let lineString = substitute(lineString, '/\*\|\*/\d\=', '', 'g')
 		let lineString = substitute(lineString, '^\s*\*\?\s*', '', 'g')
 		let lineString = substitute(lineString, '{$', '', 'g')
@@ -555,7 +555,7 @@ function! PHPFoldText() " {{{
 	" Append an (a) if there is PhpDoc in the fold (a for API)
 	if currentLine != v:foldstart
 		let lineString = lineString . " " . g:phpDocIncludedPostfix . " "
-	endif	
+	endif
 
 	" Return the foldtext
 	return "+--".lines." lines: " . lineString

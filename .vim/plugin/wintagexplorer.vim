@@ -23,7 +23,7 @@
 "    RegisterExplorers "TagsExplorer"
 " in the .vimrc. Registration provides a way to let the user customize the
 " layout of the various windows. When a explorer is released, the user needs
-" to know this "name" to register the plugin. 
+" to know this "name" to register the plugin.
 "
 " The first thing this plugin does is decide upon a "title" for itself. This is
 " the name of the buffer which winmanager will open for displaying the
@@ -69,8 +69,8 @@ function! TagsExplorer_Start()
 
 	" set up some _really_ elementary syntax highlighting.
 	if has("syntax") && !has("syntax_items") && exists("g:syntax_on")
-		syn match TagsExplorerFileName	'^\S*$'   
-		syn match TagsExplorerTagName	'^  \S*' 
+		syn match TagsExplorerFileName	'^\S*$'
+		syn match TagsExplorerTagName	'^  \S*'
 		syn match TagsExplorerError   '^"\s\+Error:'
 		syn match TagsExplorerVariable 'g:TagsExplorerSkipError'
 		syn match TagsExplorerIgnore '"$'
@@ -92,7 +92,7 @@ function! TagsExplorer_Start()
 	nnoremap <buffer> <silent> <F5> :call <SID>DisplayTagsFile()<cr>
 
 	call <SID>StartTagsFileDisplay()
-	
+
 	" clean up.
 	setlocal nomodified
 	let &showcmd = _showcmd
@@ -133,7 +133,7 @@ function! <SID>StartTagsFileDisplay()
 		" revert to the last saved view.
 		exe 'call s:LoadView('.viewhash.')'
 		exe 'let s:TagsDirectory = '.dirhash
-		
+
 		let s:lastHash = presHash
 		return
 
@@ -163,7 +163,7 @@ function! <SID>StartTagsFileDisplay()
 		setlocal nomodifiable
 
 		exe 'let s:TagsDirectory = getcwd()'
-		exe 'let '.dirhash.' = getcwd()'	
+		exe 'let '.dirhash.' = getcwd()'
 		exe 'let '.viewhash.' = s:MkViewNoNestedFolds()'
 		let s:lastHash = presHash
 
@@ -173,7 +173,7 @@ function! <SID>StartTagsFileDisplay()
 
 
 		let s:lastHash = substitute(fnamemodify('tags', ':p'), '[^a-zA-Z0-9]', '_', 'g')
-		
+
 		call <SID>DisplayTagsFile()
 
 	else
@@ -185,7 +185,7 @@ function! <SID>StartTagsFileDisplay()
 	   " <C-n> is pressed.
 	   let g:TagsExplorerSkipError = 1
 	   return
-	
+
 	end
 
 endfunction
@@ -218,7 +218,7 @@ function! <SID>DisplayTagsFile()
 	let startTime = localtime()
 	% call s:GroupTags()
 	let sortEndTime = localtime()
-	
+
 	call s:FoldTags()
 	0
 	let foldEndTime = localtime()
@@ -243,14 +243,14 @@ function! <SID>DisplayTagsFile()
 		silent! echo @a
 		redir END
 	end
-		
+
 	let @a = _a
 
 	" store the directory of the current tags file location.
 	exe 'let '.dirhash.' = getcwd()'
 	exe 'let s:TagsDirectory = '.dirhash
 	exe 'let '.viewhash.' = s:MkViewNoNestedFolds()'
-	
+
 	setlocal nomodified
 	setlocal nomodifiable
 	let &showcmd = _showcmd
@@ -294,7 +294,7 @@ function! TagsExplorer_WrapUp()
 	if !exists('s:lastHash')
 		return
 	end
-	
+
 	let viewhash = 's:viewHash_'.s:lastHash
 	exe 'let '.viewhash.' = s:MkViewNoNestedFolds()'
 endfunction
@@ -306,7 +306,7 @@ endfunction
 function! <SID>OpenTag(split)
 	let line = getline('.')
 	" if ther is a quote at the end of the line, it means we are still
-	" displaying the error message. 
+	" displaying the error message.
 	if match(line, '"$') != -1
 		return
 	end
@@ -330,7 +330,7 @@ function! <SID>OpenTag(split)
 	call WinManagerFileEdit(fnamemodify(fname, ':p'), a:split)
 	exe 'cd '._pwd
 
-	if tag != '' 
+	if tag != ''
 		exe 'silent! tag '.tag
 	end
 endfunction
@@ -341,11 +341,11 @@ endfunction
 function! <SID>GroupTags() range
 	" get the first file
 	let numfiles = 0
-	
+
 	let linenum = a:firstline
 
 	while linenum <= a:lastline
-		
+
 		" extract the filename and the tag name from this line. this is
 		" another potential speed killer.
 		let tagname = matchstr(getline(linenum), '^[^\t]*\t\@=')
@@ -367,12 +367,12 @@ function! <SID>GroupTags() range
 		end
 		" append this tag to the tag list corresponding to this file name.
 		exe 'let hash_'.fhashname.' = hash_'.fhashname.'."  ".tagname."\n"'
-		
+
 		let linenum = linenum + 1
 	endwhile
 	0
 	1,$ d_
-	
+
 	let i = 1
 	while i <= numfiles
 		$
@@ -389,7 +389,7 @@ function! <SID>GroupTags() range
 endfunction
 
 function! <SID>FoldTags()
-	
+
 	setlocal foldmethod=manual
 	1
 	let lastLine = 1
@@ -454,7 +454,7 @@ function! s:MkViewNoNestedFolds()
 		end
 		let i = i + 1
 	endwhile
-	
+
 	let viewInfo = viewInfo.'#'.openInfo
 	let viewInfo = substitute(viewInfo, '|#', '#', '')
 	let viewInfo = substitute(viewInfo, ',$', '', '')
@@ -476,7 +476,7 @@ function! s:LoadView(foldInfo)
 	let col = s:Strntok(a:foldInfo, '#', 2)
 	let folds = s:Strntok(a:foldInfo, '#', 3)
 	let fclosedinfo = s:Strntok(a:foldInfo, '#', 4)
-	
+
 	normal! zE
 
 	let i = 1
@@ -503,7 +503,7 @@ function! s:LoadView(foldInfo)
 endfunction
 
 " Strntok:
-" extract the n^th token from s seperated by tok. 
+" extract the n^th token from s seperated by tok.
 " example: Strntok('1,23,3', ',', 2) = 23
 fun! <SID>Strntok(s, tok, n)
 	return matchstr( a:s.a:tok[0], '\v(\zs([^'.a:tok.']*)\ze['.a:tok.']){'.a:n.'}')

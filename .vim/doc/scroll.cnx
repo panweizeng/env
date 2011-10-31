@@ -43,7 +43,7 @@ CTRL-D			使窗口在缓冲区中向下滚动。滚动的行数由 'scroll' 选�
 			助记：Downwards。
 			{Vi: Vim 滚动 'scroll' 屏幕行，而不是文件行；有行回绕
 			时两者会有差异}
-			
+
 <S-Down>	或				*<S-Down>* *<kPageDown>*
 <PageDown>	或				*<PageDown>* *CTRL-F*
 CTRL-F			使窗口在缓冲区中向下滚动 [count] 页。
@@ -121,7 +121,7 @@ z.			重绘，使第 [count] 行显示在窗口中部 (默认为光标所在的
 zz			类似 "z."，不过光标停留在相同的列上。注意：如果打开了
 			caps-lock，这个命令就变成了 "ZZ"：写缓冲区并退出！
 			{Vi 无此功能}
-			
+
 							*z-*
 z-			重绘，使第 [count] 行显示在窗口底部 (默认为光标所在的
 			行)。光标停留在那一行第一个非空白字符上。
@@ -139,7 +139,7 @@ z<Right>    或						*zl* *z<Right>*
 zl			使文本视图向右移动 [count] 个字符，也就是使文本向左滚
 			动 [count] 个字符。仅当 'wrap' 为关时有效。
 			{Vi 无此功能}
-			
+
 z<Left>      或						*zh* *z<Left>*
 zh			使文本视图向左移动 [count] 个字符，也就是使文本向右滚
 			动 [count] 个字符。仅当 'wrap' 为关时有效。
@@ -192,9 +192,9 @@ ze			水平滚动文本，使光标置于屏幕的结束处 (最右侧)。仅当
 
 						*syncbind* *:syncbind* *:sync*
 :syncbind		强制所有 'scrollbind' 窗口具有相同的相对偏移。即：当
-			一个窗口滚屏到了它缓冲区的顶部时，所有的 'scrollbind' 
+			一个窗口滚屏到了它缓冲区的顶部时，所有的 'scrollbind'
 			窗口都会滚屏到它们缓冲区的顶部。
-			
+
 							*scrollbind-quickadj*
 当使用键盘命令来垂直的滚动一个窗口，或用垂直滚动条来滚动一个具有光标焦点的窗口
 时， 'scrollbind' 标志是起作用的。但是，当用垂直滚动条来滚动一个不具有光标焦点

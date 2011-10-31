@@ -108,7 +108,7 @@ Unexpectedly inserting a double quote. (Anton Woellert, 2008 Mar 23)
 Works OK when 'cmdheight' is 2.
 
 The utf class table is missing some entries:
-	0x2212, minus sign 
+	0x2212, minus sign
 	0x2217, star
 	0x2500, bar
 	0x26ab, circle
@@ -392,7 +392,7 @@ Ruby completion is insecure.  Can this be fixed?
 
 When 'backupskip' is set from $TEMP special characters need to be escaped.
 (patch by Grembowietz, 2007 Feb 26, not quite right)
-Another problem is that file_pat_to_reg_pat() doesn't recognize "\\", so "\\(" 
+Another problem is that file_pat_to_reg_pat() doesn't recognize "\\", so "\\("
 will be seen as a path separator plus "\(".
 
 ":python os.chdir('/tmp')" makes short buffer names invalid. (Xavier de Gaye)
@@ -1764,7 +1764,7 @@ Macintosh:
     don't have a spell file.  Useful when there is also text in other
     languages in the file.
 -   Support more regions? Caolan McNamara argues it's needed for es_XX.
-    https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=219777    
+    https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=219777
 -   Unicode defines another quote character: 0x2019.  Use it as an equivalent
     of a single quote, thus use it as a word character like a quote and match
     with words, replacing the curly quote with a single quote.
