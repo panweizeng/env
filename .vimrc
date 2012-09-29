@@ -41,6 +41,18 @@ color darkbluefix
 "显示标签栏 0: 从不 1: 大于1个时显示 2: 总是
 set showtabline=2
 
+"设置制表符、回车、空格的显示
+"set list
+set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_
+
+"设置backspace键可以删除行首
+set backspace=indent,eol,start
+
+"使Command-T插件忽略yui目录
+set wildignore=*static/yui*
+"切换buffer不用强制保存
+set hidden
+
 " 重新载入配置
 map <leader>s :source ~/.vimrc<CR>
 
@@ -78,7 +90,11 @@ let b:javascript_fold=1
 " 打开javascript对dom、html和css的支持
 let javascript_enable_domhtmlcss=1
 
+"打开文件类型检测
 filetype on
+"为特定文件类型允许插件文件的载入
+filetype plugin on
+filetype plugin indent on
 au BufNewFile,BufRead *.as set filetype=actionscript
 " Multiple filetype for freemarker
 au BufNewFile,BufRead *.ftl set filetype=ftl.html
@@ -94,29 +110,93 @@ autocmd FileType javascript set errorformat=%f(%l):\ %m
 autocmd FileType javascript inoremap <silent> <F9> <C-O>:make<CR>
 autocmd FileType javascript map <silent> <F9> :make<CR>
 
+" In visual mode, git blame the selection
+function! GitBlame() range
+" look up function-range-example for more information
+    let beg_line = line("'<")
+    let end_line = line("'>")
+    exec '!git blame -L '. beg_line. ','. end_line. ' %'
+endfunction
+vnoremap <leader>g :call GitBlame()<CR>
+" In normal mode, git blame the current line
+nnoremap <leader>g :exec '!git blame -L '. line("."). ','. line("."). ' %'<CR>
 
-" vimwiki
-let g:vimwiki_use_mouse = 1
-let g:vimwiki_list = [{
-\'path': '~/Dropbox/document/vimwiki/',
-\'path_html': '~/Dropbox/document/vimwiki/html/',
-\'html_header': '~/Dropbox/document/vimwiki/template/header.tpl',
-\}]
+function! ConfigInit()
+    let bundles = {
+            \'vim-pathogen' : 'github.com/tpope/vim-pathogen.git',
+            \'vim-fugitive' : 'github.com/tpope/vim-fugitive.git',
+            \'nerdtree' : 'github.com/scrooloose/nerdtree.git',
+            \'nerdcommenter' : 'github.com/scrooloose/nerdcommenter.git',
+            \'ctrlp.vim' : 'github.com/kien/ctrlp.vim.git',
+            \'command-t' : 'git.wincent.com/command-t.git',
+            \'snipmate.vim' : 'github.com/msanders/snipmate.vim.git',
+            \'tagbar' : 'github.com/majutsushi/tagbar.git',
+            \'vim-taglist-plus' : 'github.com/int3/vim-taglist-plus.git',
+            \'zencoding-vim' : 'github.com/mattn/zencoding-vim.git',
+            \'vim-vividchalk' : 'github.com/tpope/vim-vividchalk.git'
+        \}
+    let bundleDir = $HOME . '/.vim/bundle/'
+    if !isdirectory(bundleDir)
+        let output = mkdir(bundleDir)
+    endif
+
+    for key in keys(bundles)
+        let dir = bundleDir . key
+        if !isdirectory(dir)
+            let cmd = 'git clone git://' . bundles[key] . ' ' . bundleDir . key
+            "execute cmd
+            echo 'fetching ' . key . '...'
+            let output = system(cmd)
+        endif
+    endfor
+    :Helptags
+    echo 'all bundles are ready.'
+endfunction
+nnoremap <leader>h :call ConfigInit()<CR>
+"call ConfigInit()
+
+""""""""""""""""""""""""" below is for testing """""""""""""""""""""""""
+
+"CtrlP插件设置
+let g:ctrlp_map = '<leader>p'
+let g:ctrlp_by_filename = 1
+
+"Command-T插件设置
+let g:CommandTMaxHeight = 10
+let g:CommandTMinHeight = 10
+let g:CommandTCancelMap=['<Esc>', '<C-c>']
+
+"载入本地扩展配置文件
+let vimrc_extend  = $HOME . "/.vimrc.ext"
+if filereadable(vimrc_extend)
+    execute "source " . vimrc_extend
+endif
+
+let pathogen = $HOME . '/.vim/bundle/vim-pathogen/autoload/pathogen.vim'
+if filereadable(pathogen)
+    execute "source " . pathogen
+    call pathogen#infect()
+endif
 
 
 """""""""""""""""""""""""""""
 " TagList setting
 """""""""""""""""""""""""""""
 "Exuberant ctags程序的位置
-let Tlist_Ctags_Cmd="/usr/bin/ctags"
-let Tlist_Inc_Winwidth=0
+"let Tlist_Ctags_Cmd="/opt/local/bin/ctags"
+"let Tlist_Ctags_Cmd="/usr/local/bin/jsctags"
+"let Tlist_Inc_Winwidth=100
+"let Tlist_WinWidth='auto'
 "在右侧窗口打开
-let Tlist_Use_Right_Window=1
+"let Tlist_Use_Right_Window=1
 "只显示当前文件的tag
-let Tlist_File_Fold_Auto_Close=1
+"let Tlist_File_Fold_Auto_Close=1
 "如果Taglist是最后一个窗口则退出vim
-let Tlist_Exit_OnlyWindow = 1
+"let Tlist_Exit_OnlyWindow = 1
+"let g:tlist_javascript_settings = 'javascript;s:string;a:array;o:object;f:function'
+let g:tlist_javascript_settings = 'javascript;f:function;c:class;o:object;m:method;s:string;a:array;n:constant'
 
+"let g:tagbar_ctags_bin = '/usr/local/bin/jsctags'
 
 """"""""""""""""""""""""""""""
 " BufExplore settingr
