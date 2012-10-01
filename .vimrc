@@ -121,7 +121,8 @@ vnoremap <leader>g :call GitBlame()<CR>
 " In normal mode, git blame the current line
 nnoremap <leader>g :exec '!git blame -L '. line("."). ','. line("."). ' %'<CR>
 
-function! ConfigInit()
+"初始化所有插件
+function! BundlesInit()
     let bundles = {
             \'vim-pathogen' : 'github.com/tpope/vim-pathogen.git',
             \'vim-fugitive' : 'github.com/tpope/vim-fugitive.git',
@@ -152,10 +153,24 @@ function! ConfigInit()
     :Helptags
     echo 'all bundles are ready.'
 endfunction
-nnoremap <leader>h :call ConfigInit()<CR>
-"call ConfigInit()
+nnoremap <leader>h :call BundlesInit()<CR>
 
-""""""""""""""""""""""""" below is for testing """""""""""""""""""""""""
+"初始化配置及pathogen
+function! VimInitAll()
+    "载入本地扩展配置文件
+    let vimrc_extend  = $HOME . "/.vimrc.ext"
+    if filereadable(vimrc_extend)
+        execute "source " . vimrc_extend
+    endif
+
+    "初始化pathogen插件
+    let pathogen = $HOME . '/.vim/bundle/vim-pathogen/autoload/pathogen.vim'
+    if filereadable(pathogen)
+        execute "source " . pathogen
+        call pathogen#infect()
+    endif
+
+endfunction
 
 "CtrlP插件设置
 let g:ctrlp_map = '<leader>p'
@@ -166,17 +181,9 @@ let g:CommandTMaxHeight = 10
 let g:CommandTMinHeight = 10
 let g:CommandTCancelMap=['<Esc>', '<C-c>']
 
-"载入本地扩展配置文件
-let vimrc_extend  = $HOME . "/.vimrc.ext"
-if filereadable(vimrc_extend)
-    execute "source " . vimrc_extend
-endif
+call VimInitAll()
 
-let pathogen = $HOME . '/.vim/bundle/vim-pathogen/autoload/pathogen.vim'
-if filereadable(pathogen)
-    execute "source " . pathogen
-    call pathogen#infect()
-endif
+""""""""""""""""""""""""" below is for testing """""""""""""""""""""""""
 
 
 """""""""""""""""""""""""""""
