@@ -1,0 +1,31 @@
+#!/bin/bash
+
+echo -n 'checking .vim/ '
+WORKPATH=`pwd`
+
+if [ ! -d ~/.vim ]; then
+    ln -s $WORKPATH/.vim ~/.vim
+    echo 'LINKED'
+else
+    echo 'OK'
+fi
+
+echo -n 'checking .vimrc '
+if [ ! -f ~/.vimrc ]; then
+    ln -s $WORKPATH/.vimrc ~/.vimrc
+    echo 'LINKED'
+else
+    echo 'OK'
+fi
+
+echo -n 'checking .screenrc '
+if [ ! -f ~/.screenrc ]; then
+    ln -s $WORKPATH/.screenrc ~/.screenrc
+    echo 'LINKED'
+else
+    echo 'OK'
+fi
+
+echo 'DONE'
+
+

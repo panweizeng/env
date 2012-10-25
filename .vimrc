@@ -134,6 +134,9 @@ function! BundlesInit()
             \'tagbar' : 'github.com/majutsushi/tagbar.git',
             \'vim-taglist-plus' : 'github.com/int3/vim-taglist-plus.git',
             \'zencoding-vim' : 'github.com/mattn/zencoding-vim.git',
+            \'syntastic' : 'github.com/scrooloose/syntastic.git',
+            \'vim-node.js' : 'github.com/mmalecki/vim-node.js.git',
+            \'vim-colors-solarized' : 'github.com/altercation/vim-colors-solarized.git',
             \'vim-vividchalk' : 'github.com/tpope/vim-vividchalk.git'
         \}
     let bundleDir = $HOME . '/.vim/bundle/'
@@ -150,7 +153,11 @@ function! BundlesInit()
             let output = system(cmd)
         endif
     endfor
-    :Helptags
+
+    if exists(':Helptags')
+        :Helptags
+    endif
+
     echo 'all bundles are ready.'
 endfunction
 nnoremap <leader>h :call BundlesInit()<CR>
@@ -165,10 +172,12 @@ function! VimInitAll()
 
     "初始化pathogen插件
     let pathogen = $HOME . '/.vim/bundle/vim-pathogen/autoload/pathogen.vim'
-    if filereadable(pathogen)
-        execute "source " . pathogen
-        call pathogen#infect()
+    if !filereadable(pathogen)
+        call BundlesInit()
     endif
+
+    execute "source " . pathogen
+    call pathogen#infect()
 
 endfunction
 
@@ -179,11 +188,27 @@ let g:ctrlp_by_filename = 1
 "Command-T插件设置
 let g:CommandTMaxHeight = 10
 let g:CommandTMinHeight = 10
-let g:CommandTCancelMap=['<Esc>', '<C-c>']
+let g:CommandTCancelMap = ['<Esc>', '<C-c>']
+
+"NERDTree插件设置
+let NERDTreeWinPos = 'left'
+nnoremap <leader>nt :NERDTree<CR>
+
+"syntastic插件设置
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['javascript', 'php'] }
+let g:syntastic_auto_loc_list = 1
+"let g:syntastic_javascript_gjslint_conf = '--strict'
+nnoremap <leader>sc :SyntasticCheck<CR>
 
 call VimInitAll()
 
 """"""""""""""""""""""""" below is for testing """""""""""""""""""""""""
+
+set background=dark
+"set cursorline
+"let g:solarized_termtrans = 1
+"colorscheme solarized
+"
 
 
 """""""""""""""""""""""""""""
