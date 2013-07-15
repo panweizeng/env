@@ -105,10 +105,20 @@ autocmd FileType python filetype plugin indent on
 autocmd FileType python setlocal et sta sw=4 sts=4
 
 " 设置javascriptlint
-autocmd FileType javascript set makeprg=jslint\ %
-autocmd FileType javascript set errorformat=%f(%l):\ %m
+"autocmd FileType javascript set makeprg=jslint\ %
+"autocmd FileType javascript set errorformat=%f(%l):\ %m
+" 设置jshint
+autocmd FileType javascript set makeprg=jshint\ --config\ ~/projects/fe.tools/jshint/jshintrc\ %
+autocmd FileType javascript set errorformat=%f:\ line\ %l\\,\ col\ %c\\,\ %m
+
 autocmd FileType javascript inoremap <silent> <F9> <C-O>:make<CR>
 autocmd FileType javascript map <silent> <F9> :make<CR>
+
+" 打开文件时总是跳到最后光标所在的行
+autocmd BufReadPost *
+    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+    \   exe "normal! g'\"" |
+    \ endif
 
 " In visual mode, git blame the selection
 function! GitBlame() range
@@ -135,6 +145,7 @@ function! BundlesInit()
             \'vim-taglist-plus' : 'github.com/int3/vim-taglist-plus.git',
             \'zencoding-vim' : 'github.com/mattn/zencoding-vim.git',
             \'syntastic' : 'github.com/scrooloose/syntastic.git',
+            \'vim-easymotion' : 'github.com/Lokaltog/vim-easymotion.git',
             \'vim-node.js' : 'github.com/mmalecki/vim-node.js.git',
             \'vim-colors-solarized' : 'github.com/altercation/vim-colors-solarized.git',
             \'vim-vividchalk' : 'github.com/tpope/vim-vividchalk.git'
@@ -195,7 +206,7 @@ let NERDTreeWinPos = 'left'
 nnoremap <leader>nt :NERDTree<CR>
 
 "syntastic插件设置
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['javascript', 'php'] }
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['dddjavascript', 'ruby'] }
 let g:syntastic_auto_loc_list = 1
 "let g:syntastic_javascript_gjslint_conf = '--strict'
 nnoremap <leader>sc :SyntasticCheck<CR>
@@ -204,11 +215,20 @@ call VimInitAll()
 
 """"""""""""""""""""""""" below is for testing """""""""""""""""""""""""
 
+" solarized
 set background=dark
-"set cursorline
-"let g:solarized_termtrans = 1
-"colorscheme solarized
-"
+set cursorline
+let g:solarized_termtrans = 1
+colorscheme solarized
+" fix folded line color
+hi Folded   guifg=#808080 guibg=#000040 ctermfg=lightblue ctermbg=black cterm=bold term=bold
+" fix tabline
+"hi TabLine     cterm=none ctermfg=lightgrey ctermbg=lightblue guifg=gray guibg=black
+"hi TabLineSel  cterm=none ctermfg=lightgrey ctermbg=LightMagenta guifg=white guibg=black
+"hi TabLineFill cterm=none ctermfg=lightblue ctermbg=lightblue guifg=black guibg=black 
+" solarized end
+
+let g:EasyMotion_leader_key = ',,'
 
 
 """""""""""""""""""""""""""""
@@ -251,5 +271,6 @@ let g:defaultExplorer = 0
 nmap <C-W><C-F> :FirstExplorerWindow<CR>
 nmap <C-W><C-B> :BottomExplorerWindow<CR>
 nmap <silent> <leader>wm :WMToggle<CR> 
+
 
 
